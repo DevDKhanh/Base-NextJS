@@ -4,7 +4,6 @@ export default function Document() {
     return (
         <Html lang="vi">
             <Head>
-                <title>My page</title>
                 <meta name="description" content="150 words" />
                 <meta name="robots" content="indexfollow" />
                 <meta
