@@ -2,8 +2,9 @@ import { Provider } from 'react-redux';
 import type { ReactElement, ReactNode } from 'react';
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
+import { PersistGate } from 'redux-persist/integration/react';
 
-import { store } from '~/redux/store';
+import { persistor, store } from '~/redux/store';
 import '~/styles/globals.scss';
 
 type NextPageWithLayout = NextPage & {
@@ -19,7 +20,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
     return (
         <Provider store={store}>
-            {getLayout(<Component {...pageProps} />)}
+            <PersistGate loading={null} persistor={persistor}>
+                {getLayout(<Component {...pageProps} />)}
+            </PersistGate>
         </Provider>
     );
 }
